@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnq0okbpptqpu"]
+
+[ext_resource type="Script" uid="uid://c6poeh2dpn7wl" path="res://objects/dry_ingredients/flour.gd" id="1_c7oga"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bbl8g"]
+
+[node name="flour" type="Area2D"]
+script = ExtResource("1_c7oga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bbl8g")

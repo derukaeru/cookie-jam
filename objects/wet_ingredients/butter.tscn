@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhcb2a87pko4h"]
+
+[ext_resource type="Script" uid="uid://dj03a8yf1w7ea" path="res://objects/wet_ingredients/butter.gd" id="1_r4nqp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xh0dg"]
+
+[node name="butter" type="Area2D"]
+script = ExtResource("1_r4nqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xh0dg")

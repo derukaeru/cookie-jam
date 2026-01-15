@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtwcc3gk1rjm8"]
+
+[ext_resource type="Script" uid="uid://dqw31lg10lrxn" path="res://objects/wet_ingredients/egg.gd" id="1_5tkwr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3k50r"]
+
+[node name="egg" type="Area2D"]
+script = ExtResource("1_5tkwr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3k50r")

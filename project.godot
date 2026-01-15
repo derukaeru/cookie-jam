@@ -14,9 +14,24 @@ config/name="cookie-jam"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+Dialogue="*res://dialogue.gd"
+G="*res://global.gd"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=720
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
+
+[global_group]
+
+dialogue_balloon=""
 
 [rendering]
 

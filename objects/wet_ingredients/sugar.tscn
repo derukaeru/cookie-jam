@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg0wkgudg5sdp"]
+
+[ext_resource type="Script" uid="uid://b6m62kbqts7r3" path="res://objects/wet_ingredients/sugar.gd" id="1_ob7h4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jo33f"]
+
+[node name="sugar" type="Area2D"]
+script = ExtResource("1_ob7h4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jo33f")
