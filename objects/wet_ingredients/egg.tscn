@@ -1,11 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtwcc3gk1rjm8"]
 
 [ext_resource type="Script" uid="uid://dqw31lg10lrxn" path="res://objects/wet_ingredients/egg.gd" id="1_5tkwr"]
+[ext_resource type="Texture2D" uid="uid://dus2roy53mbj8" path="res://assets/textures/wet_ingredients/egg.png" id="1_j2yil"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3k50r"]
-
-[node name="egg" type="Area2D"]
+[node name="egg" type="TextureRect"]
+offset_left = -20.0
+offset_top = -38.0
+offset_right = 20.0
+offset_bottom = 13.0
+texture = ExtResource("1_j2yil")
 script = ExtResource("1_5tkwr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_3k50r")
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

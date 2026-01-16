@@ -1,11 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhcb2a87pko4h"]
 
 [ext_resource type="Script" uid="uid://dj03a8yf1w7ea" path="res://objects/wet_ingredients/butter.gd" id="1_r4nqp"]
+[ext_resource type="Texture2D" uid="uid://5plf80qk7bgd" path="res://assets/textures/wet_ingredients/butter.png" id="2_0fs2v"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xh0dg"]
-
-[node name="butter" type="Area2D"]
+[node name="butter" type="TextureRect"]
+offset_left = -30.0
+offset_top = -26.0
+offset_right = 30.0
+offset_bottom = 14.0
+texture = ExtResource("2_0fs2v")
 script = ExtResource("1_r4nqp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_xh0dg")
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

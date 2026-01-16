@@ -2,7 +2,7 @@ extends Node
 
 
 var dialog_scene := load("res://addons/dialogue_manager/example_balloon/example_balloon.tscn")
-var dres := load("res://dialogues/main.dialogue")
+var dres := load("res://misc/dialogues/main.dialogue")
 var dialog_open := false
 var curr_dialog := ""
 

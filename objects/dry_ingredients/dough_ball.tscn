@@ -1,11 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwf68im0kyuy5"]
+[gd_scene load_steps=2 format=3 uid="uid://dwf68im0kyuy5"]
 
 [ext_resource type="Script" uid="uid://dvoqs3wnxwive" path="res://objects/dry_ingredients/dough_ball.gd" id="1_qwteo"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_byi5t"]
-
-[node name="dough_ball" type="Area2D"]
+[node name="dough_ball" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_qwteo")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_byi5t")

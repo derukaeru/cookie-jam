@@ -1,11 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl3vvudreqv3w"]
+[gd_scene load_steps=2 format=3 uid="uid://bl3vvudreqv3w"]
 
 [ext_resource type="Script" uid="uid://c3ajhk5ax4013" path="res://objects/dry_ingredients/salt.gd" id="1_dsybd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjcuv"]
-
-[node name="salt" type="Area2D"]
+[node name="salt" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_dsybd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_jjcuv")

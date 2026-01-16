@@ -1,11 +1,106 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnq0okbpptqpu"]
+[gd_scene load_steps=8 format=3 uid="uid://bnq0okbpptqpu"]
 
 [ext_resource type="Script" uid="uid://c6poeh2dpn7wl" path="res://objects/dry_ingredients/flour.gd" id="1_c7oga"]
+[ext_resource type="Texture2D" uid="uid://damiec0qcjbcb" path="res://assets/textures/dry_ingredients/flour.png" id="2_n7mts"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bbl8g"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7mts"]
+size = Vector2(16, 40)
 
-[node name="flour" type="Area2D"]
+[sub_resource type="Animation" id="Animation_n7mts"]
+resource_name = "to_pour"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.8325958]
+}
+
+[sub_resource type="Animation" id="Animation_uvy6n"]
+resource_name = "pouring"
+length = 0.3
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.8325958, -1.5707964]
+}
+
+[sub_resource type="Animation" id="Animation_rbdof"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rbdof"]
+_data = {
+&"RESET": SubResource("Animation_rbdof"),
+&"pouring": SubResource("Animation_uvy6n"),
+&"to_pour": SubResource("Animation_n7mts")
+}
+
+[node name="flour" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -72.0
+offset_top = -104.0
+offset_right = -72.0
+offset_bottom = -104.0
 script = ExtResource("1_c7oga")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_bbl8g")
+[node name="flour_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flour_area"]
+position = Vector2(-32, 128)
+shape = SubResource("RectangleShape2D_n7mts")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -112.0
+offset_right = 146.0
+offset_bottom = 131.0
+pivot_offset = Vector2(73, 121.5)
+texture = ExtResource("2_n7mts")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_rbdof")
+}
+
+[node name="pouring" type="Label" parent="."]
+layout_mode = 0
+offset_top = -152.0
+offset_right = 40.0
+offset_bottom = -129.0
+
+[node name="dragging" type="Label" parent="."]
+layout_mode = 0
+offset_top = -128.0
+offset_right = 40.0
+offset_bottom = -105.0
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="area_exited" from="flour_area" to="." method="_on_flour_area_area_exited"]
