@@ -1,14 +1,94 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhcb2a87pko4h"]
+[gd_scene load_steps=8 format=3 uid="uid://bhcb2a87pko4h"]
 
 [ext_resource type="Script" uid="uid://dj03a8yf1w7ea" path="res://objects/wet_ingredients/butter.gd" id="1_r4nqp"]
 [ext_resource type="Texture2D" uid="uid://5plf80qk7bgd" path="res://assets/textures/wet_ingredients/butter.png" id="2_0fs2v"]
 
-[node name="butter" type="TextureRect"]
-offset_left = -30.0
-offset_top = -26.0
-offset_right = 30.0
-offset_bottom = 14.0
-texture = ExtResource("2_0fs2v")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhdn6"]
+size = Vector2(56, 16)
+
+[sub_resource type="Animation" id="Animation_0fs2v"]
+resource_name = "to_pour"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.2339478]
+}
+
+[sub_resource type="Animation" id="Animation_cbgf4"]
+resource_name = "pouring"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.2338113]
+}
+
+[sub_resource type="Animation" id="Animation_oqpq3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fopp7"]
+_data = {
+&"RESET": SubResource("Animation_oqpq3"),
+&"pouring": SubResource("Animation_cbgf4"),
+&"to_pour": SubResource("Animation_0fs2v")
+}
+
+[node name="butter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_r4nqp")
 
+[node name="butter_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="butter_area"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_rhdn6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 24.0
+pivot_offset = Vector2(30, 20)
+texture = ExtResource("2_0fs2v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_fopp7")
+}
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="area_exited" from="butter_area" to="." method="_on_butter_area_area_exited"]

@@ -25,6 +25,7 @@ func _on_gui_input(event):
 				var center_x = size.x * 0.5
 				var grab_bias = (drag_offset.x - center_x) / center_x
 				sway_rotation = sway_rotation + grab_bias * 0.15
+				z_index = 1
 	elif event is InputEventMouseMotion and dragging:
 		var new_position = global_position + event.relative
 	
@@ -38,6 +39,7 @@ func _on_gui_input(event):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 		dragging = false
+		z_index = 0
 
 func _process(delta):
 	# apply velocity

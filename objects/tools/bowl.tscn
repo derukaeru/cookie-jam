@@ -8,9 +8,9 @@ size = Vector2(216, 128)
 
 [node name="bowl" type="TextureRect"]
 offset_left = -104.0
-offset_top = -160.0
+offset_top = -184.0
 offset_right = 109.0
-offset_bottom = 40.0
+offset_bottom = 16.0
 texture = ExtResource("2_l41ge")
 script = ExtResource("1_j67tx")
 
